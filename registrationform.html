@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1 style="text-align: center; color: #df5bb3;">Registration Form</h1>
+    <form action="#" method="post">
+        <table align="center">
+            <tr>
+                <td><label for="firstname">First Name:</label></td>
+                <td><input type="text" id="firstname" name="firstname" required></td>
+            </tr>
+            <tr>
+                <td><label for="lastname">Last Name:</label></td>
+                <td><input type="text" id="lastname" name="lastname" required></td>
+            </tr>
+            <tr>
+                <td><label for="dob">Date of Birth:</label></td>
+                <td><input type="date" id="dob" name="dob" required></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age:</label></td>
+                <td><input type="number" id="age" name="age" min="0" required></td>
+            </tr>
+            <tr>
+                <td><label for="gender">Gender:</label></td>
+                <td>
+                    <input type="radio" id="male" name="gender" value="Male" required> Male
+                    <input type="radio" id="female" name="gender" value="Female" required> Female
+                    <input type="radio" id="other" name="gender" value="Other" required> Other
+                </td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone Number:</label></td>
+                <td><input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email Address:</label></td>
+                <td><input type="email" id="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td><textarea id="address" name="address" rows="3" required></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="state">State:</label></td>
+                <td>
+                    <select id="state" name="state" required>
+                        <option value="">Select State</option>
+                        <option value="state1">Kerala</option>
+                        <option value="state2">Tamilnadu</option>
+                        <option value="state3">Karnataka</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="city">City:</label></td>
+                <td>
+                    <select id="city" name="city" required>
+                        <option value="">Select city</option>
+                        <option value="city1">Kochi</option>
+                        <option value="city2">Coimbatore</option>
+                        <option value="city3">Bangalore</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input type="text" id="username" name="username" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td><label for="confirmpassword">Confirm Password:</label></td>
+                <td><input type="password" id="confirmpassword" name="confirmpassword" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit" style="margin-top:20px;background-color: #df5bb3;width: 30%;">Register</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
