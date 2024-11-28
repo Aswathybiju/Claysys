@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./signin.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Logo" class="logo"> 
+                Support Teams
+            </div>
+            <ul class="nav-links">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="signupform.html">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="glass-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form name="form" action="#" method="POST" onsubmit="validate(event)">
+                <input type="text" id="username" name="username" placeholder="User name">
+                <span id="username_error" class="error" style="display:none; color:red;">Username must be at least 5 characters long.</span>
+                
+                <input type="password" id="password" name="password" placeholder="Password">
+                <span id="password_error" class="error" style="display:none; color:red;">Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter and one number.</span>
+                
+                <div class="options">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                
+                <button type="submit">Login</button>
+
+                <p>Don't have an account? <a href="signup.html" id="register">Register</a></p>
+            </form>
+        </div>
+    </div>
+<script>
+    function validate(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const usernamePattern = /^[a-zA-Z0-9]{5,}$/;
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/;
+        let isValid = true;
+        if (!usernamePattern.test(username)) {
+            document.getElementById('username_error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('username_error').style.display = 'none';
+        }
+        if (!passwordPattern.test(password)) {
+            document.getElementById('password_error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('password_error').style.display = 'none';
+        }
+        return isValid;
+    }
+</script>
+</body>
+</html>

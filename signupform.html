@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg.jpg');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            flex-direction: column;
+            padding-top: 70px;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #111111;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline-block;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav-links a:hover {
+            color: #f0b400;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: #eee7f3;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            text-align: left;
+            margin-top: 50px;
+        }
+
+        /* Form Header */
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #0f0f0f;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* Form Group Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: black;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .radio-group label {
+            font-size: 14px;
+            color: #555555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .radio-group input[type="radio"] {
+            accent-color: #6e8efb;
+            cursor: pointer;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button {
+            background: #6e8efb;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: #5a7ded;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 20px;
+            }
+
+            .navbar {
+                padding: 10px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-logo {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+
+            .form-container {
+                padding: 20px;
+                margin-top: 20px;
+            }
+
+            .form-container h2 {
+                font-size: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            .button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo {
+                font-size: 16px;
+            }
+
+            .form-container {
+                width: 90%;
+            }
+
+            .radio-group label {
+                font-size: 12px;
+            }
+        }
+
+        .error {
+            color: red;
+            font-size: 11px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Logo" style="width: 40px; margin-right: 10px;">
+                Support Teams
+            </div>                       
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="signin.html">Sign in</a></li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Signup Form -->
+    <div class="form-container">
+        <h2>Signup Form</h2>
+        <form id="signupForm" class="form" onsubmit="validate(event)">
+            <!-- First Name -->
+            <div class="form-group">
+                <input type="text" id="firstname" name="firstname"  placeholder="First name">
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group">
+                <input type="text" id="lastname" name="lastname"  placeholder="Last name">
+            </div>
+
+            <div class="form-group">
+                <input type="date" id="dob" name="dob" placeholder="Date of birth">
+            </div>
+
+            <div class="form-group">
+                <input type="text" disabled id="age" name="age"  placeholder="Age">
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <textarea id="address" name="address" rows="4"  placeholder="Enter your address here"></textarea>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone"  placeholder="Phone number">
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <input type="email" id="email" name="email"  placeholder="Email">
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <label><input type="radio" id="male" name="gender" value="Male" > Male</label>
+                    <label><input type="radio" id="female" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" id="other" name="gender" value="Other"> Other</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" name="state" onchange="updateCityDropdown()">
+                    <option value="">Select State</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                </select>
+            </div>
+            
+            <!-- City Dropdown -->
+            <div class="form-group">
+                <label for="city">City</label>
+                <select id="city" name="city">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+            <!--username-->
+            <div class="form-group">
+                <input type="text" id="username" name="username"  placeholder="Usename">
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <input type="password" id="password" name="password"  placeholder="Password">
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <input type="password" id="confirmpassword" name="confirmpassword"  placeholder="Confirm password">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="button-container">
+                <button type="submit" id="submit" class="button">Register</button>
+            </div>
+        </form>
+    </div>
+<script>
+        const stateCityMap = {
+            Kerala: ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur"],
+            "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli"],
+            Karnataka: ["Bengaluru", "Mysuru", "Mangalore", "Hubli"],
+            Maharashtra: ["Mumbai", "Pune", "Nagpur", "Nashik"]
+        };
+    
+        function updateCityDropdown() {
+            const stateDropdown = document.getElementById("state");
+            const cityDropdown = document.getElementById("city");
+            const selectedState = stateDropdown.value;
+    
+            // Clear existing options
+            cityDropdown.innerHTML = '<option value="">Select City</option>';
+    
+            // Populate cities if a valid state is selected
+            if (stateCityMap[selectedState]) {
+                stateCityMap[selectedState].forEach(city => {
+                    const option = document.createElement("option");
+                    option.value = city;
+                    option.textContent = city;
+                    cityDropdown.appendChild(option);
+                });
+            }
+        }
+
+
+    function clearError(input) {
+        const error = input.nextElementSibling;
+        if (error && error.classList.contains('error')) {
+            error.remove();
+        }
+    }
+
+    document.getElementById('dob').addEventListener('input', () => {
+        const ageInput = document.getElementById('age');
+        const dob = new Date(document.getElementById('dob').value);
+        const today = new Date();
+        const age = today.getFullYear() - dob.getFullYear();
+
+        if (age < 18) {
+            showError(document.getElementById('dob'), 'Age must be greater than 17');
+        }
+        ageInput.value = age;
+    });
+
+    const inputs = document.querySelectorAll('input, select');
+    inputs.forEach(input => {
+        input.addEventListener('input', () => clearError(input));
+        input.addEventListener('change', () => clearError(input));
+    });
+
+    function showError(input, message) {
+        let error = input.nextElementSibling;
+        if (!error || !error.classList.contains('error')) {
+            error = document.createElement('span');
+            error.classList.add('error');
+            input.parentElement.appendChild(error);
+        }
+        error.textContent = message;
+    }
+    
+
+    function validate(event) {
+        event.preventDefault();
+    
+        const firstname = document.getElementById('firstname');
+        const lastname = document.getElementById('lastname');
+        const address = document.getElementById('address');
+        const phone = document.getElementById('phone');
+        const email = document.getElementById('email');
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const state = document.getElementById('state');
+        const city = document.getElementById('city');
+        const username = document.getElementById('username');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmpassword');
+    
+        let isValid = true;
+    
+        
+        if (firstname.value.trim() === '') {
+            showError(firstname, 'First name is required.');
+            isValid = false;
+        } else {
+            clearError(firstname);
+        }
+    
+        
+        if (lastname.value.trim() === '') {
+            showError(lastname, 'Last name is required.');
+            isValid = false;
+        } else {
+            clearError(lastname);
+        }
+    
+        
+        if (address.value.trim() === '') {
+            showError(address, 'Address is required.');
+            isValid = false;
+        } else {
+            clearError(address);
+        }
+    
+        
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone.value.trim())) {
+            showError(phone, 'Phone number must be 10 digits.');
+            isValid = false;
+        } else {
+            clearError(phone);
+        }
+    
+        
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+            showError(email, 'Invalid email address.');
+            isValid = false;
+        } else {
+            clearError(email);
+        }
+    
+        
+        if (!gender) {
+            const genderGroup = document.querySelector('.radio-group');
+            showError(genderGroup, 'Please select a gender.');
+            isValid = false;
+        } else {
+            const genderGroup = document.querySelector('.radio-group');
+            clearError(genderGroup);
+        }
+    
+        
+        if (state.value === '') {
+            showError(state, 'Please select a state.');
+            isValid = false;
+        } else {
+            clearError(state);
+        }
+    
+        
+        if (city.value === '') {
+            showError(city, 'Please select a city.');
+            isValid = false;
+        } else {
+            clearError(city);
+        }
+    
+        
+        if (username.value.trim().length < 5) {
+            showError(username, 'Username must be at least 5 characters long.');
+            isValid = false;
+        } else {
+            clearError(username);
+        }
+    
+        
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/;
+        if (!passwordPattern.test(password.value)) {
+            showError(password, 'Password must be at least 6 characters long and contain an uppercase letter, a lowercase letter, a number, and a special character.');
+            isValid = false;
+        } else {
+            clearError(password);
+        }
+    
+        
+        if (password.value !== confirmPassword.value) {
+            showError(confirmPassword, 'Passwords do not match.');
+            isValid = false;
+        } else {
+            clearError(confirmPassword);
+        }
+
+        
+        const age = document.getElementById('age');
+        if (age.value < 18) {
+            showError(age, 'Age must be greater than 17.');
+            isValid = false;
+        } else {
+            clearError(dob);
+        }
+
+        if (isValid) {
+            document.getElementById('submit').style.backgroundColor = 'green';
+        } else {
+            document.getElementById('submit').style.backgroundColor = 'red';
+        }
+
+        return isValid;
+    }
+    
+</script>
+</body>
+</html>
